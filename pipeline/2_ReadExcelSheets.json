@@ -29,8 +29,57 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"enableStaging": false
-							}
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "PreserveHierarchy"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".csv"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Excel1",
+									"type": "DatasetReference",
+									"parameters": {
+										"SheetName": {
+											"value": "@string(concat('Sheet',variables('Counter')))",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_destination_copy1",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": "@string(concat('Sheet',variables('Counter')))"
+									}
+								}
+							]
 						},
 						{
 							"name": "Set variable1",
@@ -40,7 +89,14 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Counter",
+								"value": {
+									"value": "@int(variables('tempCounter'))",
+									"type": "Expression"
+								}
+							}
 						},
 						{
 							"name": "Set variable2",
@@ -57,13 +113,49 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "tempCounter",
+								"value": {
+									"value": "@add(int(variables('Counter')),1)",
+									"type": "Expression"
+								}
+							}
 						}
 					],
 					"timeout": "0.12:00:00"
 				}
+			},
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Until1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
 			}
 		],
+		"variables": {
+			"Counter": {
+				"type": "Integer",
+				"defaultValue": 1
+			},
+			"sheetName": {
+				"type": "String"
+			},
+			"tempCounter": {
+				"type": "Integer",
+				"defaultValue": 1
+			}
+		},
 		"annotations": []
 	}
 }
