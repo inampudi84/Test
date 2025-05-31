@@ -29,10 +29,40 @@
 					"dataset": {
 						"referenceName": "ds_source",
 						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Due_Date",
+					"value": {
+						"value": "@activity('Lookup1').output.value[3]['Due Date']\n\n",
+						"type": "Expression"
 					}
 				}
 			}
 		],
+		"variables": {
+			"Due_Date": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
