@@ -19,7 +19,8 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
+							"recursive": false,
+							"modifiedDatetimeStart": "2025-06-01T12:40:00.000Z",
 							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
