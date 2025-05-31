@@ -158,7 +158,8 @@
 					{
 						"activity": "Until1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Succeeded",
+							"Failed"
 						]
 					}
 				],
