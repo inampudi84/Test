@@ -1,15 +1,24 @@
 {
-	"name": "ds_source",
+	"name": "ds_source_copy1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_ADLS",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SrcFilename": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().SrcFilename",
+					"type": "Expression"
+				},
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",
