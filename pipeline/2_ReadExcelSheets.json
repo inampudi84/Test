@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "true",
+						"value": "@equals(variables('LoopControl'), true)",
 						"type": "Expression"
 					},
 					"activities": [
@@ -158,6 +158,10 @@
 			"tempCounter": {
 				"type": "Integer",
 				"defaultValue": 1
+			},
+			"LoopControl": {
+				"type": "Boolean",
+				"defaultValue": false
 			}
 		},
 		"annotations": []
