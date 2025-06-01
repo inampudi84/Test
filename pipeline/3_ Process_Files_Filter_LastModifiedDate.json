@@ -21,7 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": false,
 							"modifiedDatetimeStart": "2025-04-01T00:35:00.000Z",
-							"modifiedDatetimeEnd": "2025-06-01T00:50:00.000Z",
+							"modifiedDatetimeEnd": "2025-05-31T01:50:00.000Z",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -39,8 +39,167 @@
 						}
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Due Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Due Date",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Eff Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Eff Date",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Tran Amt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tran Amt",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Principal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Principal",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Interest",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Interest",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Escrow",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Escrow",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Fees",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fees",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Suspense",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Suspense",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Description",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Description",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Principal Balance",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Principal Balance",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Escrow Balance",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Escrow Balance",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Suspense Balance",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Suspense Balance",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
