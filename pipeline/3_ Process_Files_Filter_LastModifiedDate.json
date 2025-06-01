@@ -22,7 +22,6 @@
 							"recursive": false,
 							"modifiedDatetimeStart": "2025-04-01T00:35:00.000Z",
 							"modifiedDatetimeEnd": "2025-06-01T00:50:00.000Z",
-							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
