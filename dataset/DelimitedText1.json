@@ -1,0 +1,75 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "test"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Due_Date",
+				"type": "String"
+			},
+			{
+				"name": "Eff_Date",
+				"type": "String"
+			},
+			{
+				"name": "Tran_Amt",
+				"type": "String"
+			},
+			{
+				"name": "Principal",
+				"type": "String"
+			},
+			{
+				"name": "Interest",
+				"type": "String"
+			},
+			{
+				"name": "Escrow",
+				"type": "String"
+			},
+			{
+				"name": "Fees",
+				"type": "String"
+			},
+			{
+				"name": "Suspense",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Principal_Balance",
+				"type": "String"
+			},
+			{
+				"name": "Escrow_Balance",
+				"type": "String"
+			},
+			{
+				"name": "Suspense_Balance",
+				"type": "String"
+			}
+		]
+	}
+}
