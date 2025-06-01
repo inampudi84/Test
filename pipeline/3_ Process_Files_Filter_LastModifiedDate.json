@@ -20,7 +20,8 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": false,
-							"modifiedDatetimeStart": "2025-06-01T12:35:00.000Z",
+							"modifiedDatetimeStart": "2025-04-01T00:35:00.000Z",
+							"modifiedDatetimeEnd": "2025-06-01T00:50:00.000Z",
 							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
@@ -29,15 +30,13 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
 							"copyBehavior": "PreserveHierarchy"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -58,7 +57,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_destination",
+						"referenceName": "DSParque",
 						"type": "DatasetReference"
 					}
 				]

@@ -1,0 +1,19 @@
+{
+	"name": "DSParque",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "test"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
