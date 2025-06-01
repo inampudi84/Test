@@ -75,17 +75,17 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference",
-						"parameters": {
-							"tableName": "history.csv"
-						}
+						"referenceName": "ds_source",
+						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"structure",
-						"exists",
-						"columnCount"
-					]
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
 				}
 			},
 			{
