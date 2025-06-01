@@ -81,6 +81,7 @@
 					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -116,6 +117,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"a": {
+				"type": "string"
+			},
+			"b": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"Due_Date": {
 				"type": "String"
