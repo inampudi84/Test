@@ -1,0 +1,15 @@
+{
+	"name": "test",
+	"properties": {
+		"description": "calling Test Function",
+		"type": "UDFLibrary",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"Test() as timestamp = currentTimestamp()"
+			]
+		}
+	}
+}
