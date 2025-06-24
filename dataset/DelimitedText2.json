@@ -20,55 +20,23 @@
 		},
 		"schema": [
 			{
-				"name": "Date",
+				"name": "name",
 				"type": "String"
 			},
 			{
-				"name": "Due_Date",
+				"name": "version",
 				"type": "String"
 			},
 			{
-				"name": "Eff_Date",
+				"name": "edition",
 				"type": "String"
 			},
 			{
-				"name": "Tran_Amt",
+				"name": "cores",
 				"type": "String"
 			},
 			{
-				"name": "Principal",
-				"type": "String"
-			},
-			{
-				"name": "Interest",
-				"type": "String"
-			},
-			{
-				"name": "Escrow",
-				"type": "String"
-			},
-			{
-				"name": "Fees",
-				"type": "String"
-			},
-			{
-				"name": "Suspense",
-				"type": "String"
-			},
-			{
-				"name": "Description",
-				"type": "String"
-			},
-			{
-				"name": "Principal_Balance",
-				"type": "String"
-			},
-			{
-				"name": "Escrow_Balance",
-				"type": "String"
-			},
-			{
-				"name": "Suspense_Balance",
+				"name": "hostType",
 				"type": "String"
 			}
 		]

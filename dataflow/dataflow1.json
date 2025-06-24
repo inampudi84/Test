@@ -12,10 +12,37 @@
 					"name": "Readinghistory"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "ls_ADLS",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
+				"          name as string,",
+				"          version as string,",
+				"          edition as string,",
+				"          cores as string,",
+				"          hostType as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> Readinghistory",
+				"Readinghistory sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
 				"          Date as string,",
 				"          Due_Date as string,",
 				"          Eff_Date as string,",
@@ -30,14 +57,11 @@
 				"          Escrow_Balance as string,",
 				"          Suspense_Balance as string",
 				"     ),",
-				"     allowSchemaDrift: false,",
-				"     validateSchema: true,",
-				"     limit: 100,",
-				"     ignoreNoFilesFound: false,",
-				"     partitionBy('key',",
-				"          0,",
-				"          ERROR_FUNCTION('')",
-				"     )) ~> Readinghistory"
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
