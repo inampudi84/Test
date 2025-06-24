@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText3",
+						"referenceName": "AzureSqlTable2",
 						"type": "DatasetReference"
 					},
 					"name": "sink1",
@@ -43,25 +43,28 @@
 				"Readinghistory sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          Date as string,",
-				"          Due_Date as string,",
-				"          Eff_Date as string,",
-				"          Tran_Amt as string,",
-				"          Principal as string,",
-				"          Interest as string,",
-				"          Escrow as string,",
-				"          Fees as string,",
-				"          Suspense as string,",
-				"          Description as string,",
-				"          Principal_Balance as string,",
-				"          Escrow_Balance as string,",
-				"          Suspense_Balance as string",
+				"          name as string,",
+				"          version as string,",
+				"          edition as string,",
+				"          cores as string,",
+				"          hostType as string",
 				"     ),",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          name,",
+				"          version,",
+				"          edition,",
+				"          cores,",
+				"          hostType",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
