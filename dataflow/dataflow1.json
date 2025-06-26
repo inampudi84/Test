@@ -6,64 +6,38 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText2",
+						"referenceName": "DelimitedText3",
 						"type": "DatasetReference"
 					},
-					"name": "Readinghistory"
+					"name": "source1"
 				}
 			],
-			"sinks": [
+			"sinks": [],
+			"transformations": [
 				{
-					"dataset": {
-						"referenceName": "AzureSqlTable2",
-						"type": "DatasetReference"
-					},
-					"name": "sink1",
-					"rejectedDataLinkedService": {
-						"referenceName": "ls_ADLS",
-						"type": "LinkedServiceReference"
-					}
+					"name": "derivedColumn1"
 				}
 			],
-			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          name as string,",
-				"          version as string,",
-				"          edition as string,",
-				"          cores as string,",
-				"          hostType as string",
+				"          Date as date,",
+				"          Due_Date as date,",
+				"          Eff_Date as date,",
+				"          Tran_Amt as decimal(10,0),",
+				"          Principal as decimal(10,0),",
+				"          Interest as decimal(10,0),",
+				"          Escrow as decimal(10,0),",
+				"          Fees as decimal(10,0),",
+				"          Suspense as decimal(10,0),",
+				"          Description as string,",
+				"          Principal_Balance as decimal(10,0),",
+				"          Escrow_Balance as decimal(10,0),",
+				"          Suspense_Balance as decimal(10,0)",
 				"     ),",
-				"     allowSchemaDrift: false,",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     limit: 100,",
-				"     ignoreNoFilesFound: false,",
-				"     partitionBy('hash', 1)) ~> Readinghistory",
-				"Readinghistory sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          name as string,",
-				"          version as string,",
-				"          edition as string,",
-				"          cores as string,",
-				"          hostType as string",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          name,",
-				"          version,",
-				"          edition,",
-				"          cores,",
-				"          hostType",
-				"     ),",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(column1 = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
